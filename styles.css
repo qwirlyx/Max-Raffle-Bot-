@@ -1,0 +1,689 @@
+/* Подключаем современный шрифт */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* === ГЛОБАЛЬНЫЙ СКРОЛЛБАР === */
+/* Делаем его красивым и темным во всем проекте */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1e1e1e; 
+}
+::-webkit-scrollbar-thumb {
+    background: #444; 
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+/* === ОСНОВНЫЕ СТИЛИ === */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Основной контейнер */
+.container {
+    max-width: 900px; /* Чуть шире для удобства чата */
+    margin: 0 auto;
+    background-color: #1e1e1e;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    position: relative; /* Для позиционирования кнопки выхода */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #ffffff;
+}
+
+h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    line-height: 1.2;
+    color: #ffffff;
+}
+
+a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: 500;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* === КНОПКА ВЫХОДА === */
+.logout-btn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: #2c2c2c;
+    color: #aaa;
+    text-decoration: none !important; /* Убираем подчеркивание */
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    border: 1px solid #333;
+    transition: all 0.2s;
+}
+.logout-btn:hover {
+    background: #d32f2f;
+    color: white;
+    border-color: #d32f2f;
+}
+
+/* === ТАБЫ (Вкладки) === */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.full-width-btn {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.tab {
+    padding: 10px 20px;
+    background-color: #2c2c2c;
+    border: none;
+    color: #cccccc;
+    cursor: pointer;
+    border-radius: 10px; /* Скругленные */
+    transition: background-color 0.3s, color 0.3s;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.tab.active {
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+.tab:hover {
+    background-color: #3b3b3b;
+    color: #ffffff;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === ФОРМЫ И ПОЛЯ === */
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-inputs-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.form-inputs-row .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    font-size: 13px;
+    color: #aaa;
+    margin-left: 2px;
+}
+
+input, select, textarea {
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border 0.3s, background-color 0.3s;
+    box-sizing: border-box; /* Важно для отступов */
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #4a90e2;
+    background-color: #313131;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Кнопка отправки формы */
+button[type="submit"] {
+    padding: 12px 20px;
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Чекбоксы */
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    margin-top: 5px;
+}
+.checkbox-wrapper input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 0;
+}
+.checkbox-wrapper label {
+    margin: 0;
+    color: #eee;
+    cursor: pointer;
+}
+
+/* Поле загрузки файла */
+input[type="file"] {
+    padding: 10px;
+    background: #2a2a2a;
+    color: #aaa;
+    border: 1px solid #333;
+    cursor: pointer;
+}
+
+/* === СПИСОК РОЗЫГРЫШЕЙ === */
+.result {
+    margin-top: 10px;
+}
+
+.promo-btn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+}
+
+.raffle-card {
+    background: #252525;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.raffle-card:hover {
+    border-color: #444;
+}
+
+.raffle-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+}
+
+.status-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+.status-pending { background: #FF9800; color: #000; }
+.status-active { background: #4CAF50; color: white; }
+.status-finished { background: #9E9E9E; color: white; }
+
+.btn-delete {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+.btn-delete:hover {
+    background-color: #b71c1c;
+}
+
+/* === ЧАТ (АДМИНКА) === */
+.chat-layout {
+    display: flex;
+    height: 600px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1e1e1e;
+}
+
+.chat-sidebar {
+    width: 30%;
+    min-width: 200px;
+    border-right: 1px solid #333;
+    overflow-y: auto;
+    background: #252525;
+}
+
+.chat-main {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    background: #1e1e1e;
+}
+
+.user-item {
+    padding: 15px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.2s;
+}
+.user-item:hover {
+    background: #2c2c2c;
+}
+.user-item.active {
+    background: #333;
+    border-left: 3px solid #4a90e2;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background: #444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+}
+
+.user-meta {
+    font-size: 11px;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+}
+
+.unread-badge {
+    background: #e24a4a;
+    color: white;
+    border-radius: 10px;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.chat-header {
+    padding: 15px;
+    border-bottom: 1px solid #333;
+    background: #252525;
+    font-weight: 600;
+    color: #fff;
+}
+
+.messages-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-image: radial-gradient(#2c2c2c 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.message {
+    max-width: 75%;
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 14px;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.msg-in {
+    align-self: flex-start;
+    background: #333;
+    color: #eee;
+    border-bottom-left-radius: 2px;
+}
+
+.msg-out {
+    align-self: flex-end;
+    background: #4a90e2;
+    color: #fff;
+    border-bottom-right-radius: 2px;
+}
+
+.msg-time {
+    font-size: 10px;
+    opacity: 0.7;
+    text-align: right;
+    margin-top: 4px;
+}
+
+.msg-img {
+    max-width: 200px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.chat-input {
+    padding: 15px;
+    border-top: 1px solid #333;
+    background: #252525;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.chat-input input[type="text"] {
+    flex: 1;
+    border-radius: 20px;
+    padding: 10px 15px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+}
+.chat-input input[type="text"]:focus {
+    background: #252525;
+    border-color: #4a90e2;
+}
+
+.btn-icon {
+    cursor: pointer;
+    padding: 8px;
+    color: #aaa;
+    font-size: 20px;
+    transition: color 0.2s;
+}
+.btn-icon:hover {
+    color: #fff;
+}
+
+/* === СТРАНИЦА ВХОДА (LOGIN) === */
+.login-card {
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    width: 300px;
+    text-align: center;
+    border: 1px solid #333;
+    /* Центрирование на странице делается через flex у body страницы login.php, 
+       но стили карточки берем отсюда */
+    margin: auto; 
+}
+
+.login-title {
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.error-msg {
+    color: #e24a4a;
+    font-size: 14px;
+    margin-bottom: 15px;
+    background: rgba(226, 74, 74, 0.1);
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(226, 74, 74, 0.2);
+}
+
+.card {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.btn {
+    display: inline-block;
+    background: #4a90e2;
+    color: #fff;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #357abd;
+}
+
+.promo-block {
+    margin-top: 20px;
+}
+
+.promo-block h3,
+.promo-block h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.promo-block label {
+    display: block;
+    margin-bottom: 8px;
+    color: #bbb;
+    font-size: 13px;
+}
+
+.promo-block textarea,
+.promo-block input[type="text"],
+.promo-block input[type="file"],
+.promo-block select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    background: #2a2a2a;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
+.promo-block .btn {
+    width: auto;
+}
+
+input[type="file"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    background: #2a2a2a;
+    color: #aaa;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input[type="file"]::file-selector-button,
+input[type="file"]::-webkit-file-upload-button {
+    background: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+input[type="file"]::file-selector-button:hover,
+input[type="file"]::-webkit-file-upload-button:hover {
+    background: #357abd;
+}
+
+/* === ВСПОМОГАТЕЛЬНЫЕ КЛАССЫ === */
+.center-text { text-align: center; }
+.help-text { font-size: 12px; color: #888; margin-top: 5px; margin-bottom: 5px; display: block;}
+.section-title { color: #4a90e2; border-bottom: 1px solid #333; padding-bottom: 5px; margin-top: 25px; margin-bottom: 15px; font-size: 18px; }
+.alert-box { background: #27ae60; color: white; padding: 12px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-weight: bold; }
+
+/* === РАЗДЕЛЕНИЕ MAX / TELEGRAM В СПИСКАХ === */
+
+/* MAX — темнее, плотный синий */
+.raffle-card.platform-max,
+.broadcast-card.platform-max,
+.card.platform-max {
+    background: linear-gradient(90deg, #102a5c 0%, #1e1e1e 34%);
+    border-left: 8px solid #1d4ed8;
+    box-shadow: 0 4px 14px rgba(29, 78, 216, 0.28);
+}
+
+/* Telegram — светлее, голубой */
+.raffle-card.platform-telegram,
+.broadcast-card.platform-telegram,
+.card.platform-telegram {
+    background: linear-gradient(90deg, #164e63 0%, #1e1e1e 34%);
+    border-left: 8px solid #67e8f9;
+    box-shadow: 0 4px 14px rgba(103, 232, 249, 0.26);
+}
+
+/* MAX бейдж */
+.platform-badge.platform-max,
+.badge-platform-max {
+    background: #1e3a8a;
+    color: #ffffff;
+    border: 1px solid #3b82f6;
+}
+
+/* Telegram бейдж */
+.platform-badge.platform-telegram,
+.badge-platform-telegram {
+    background: #06b6d4;
+    color: #001018;
+    border: 1px solid #67e8f9;
+}
+
+/* Чтобы бейджи выглядели нормально, если им не задан общий стиль */
+.platform-badge,
+.badge-platform-max,
+.badge-platform-telegram {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+/* Лёгкое усиление при наведении */
+.raffle-card.platform-max:hover,
+.broadcast-card.platform-max:hover,
+.card.platform-max:hover {
+    border-color: #3b82f6;
+}
+
+.raffle-card.platform-telegram:hover,
+.broadcast-card.platform-telegram:hover,
+.card.platform-telegram:hover {
+    border-color: #22d3ee;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .form-inputs-row { flex-direction: column; }
+    body { padding: 10px; }
+    .container { padding: 15px; }
+    .logout-btn { position: static; display: block; text-align: center; margin-bottom: 15px; margin-right: 0; }
+    
+    .chat-layout { height: 500px; flex-direction: column; }
+    .chat-sidebar { width: 100%; height: 150px; border-right: none; border-bottom: 1px solid #333; }
+    .chat-main { width: 100%; height: 350px; }
+}
+
+/* === VK / РАЗДЕЛЕНИЕ ПЛОЩАДОК === */
+.platform-card-vk,
+.raffle-card.platform-vk,
+.broadcast-card.platform-vk,
+.card.platform-vk {
+    background: linear-gradient(90deg, #24175f 0%, #1e1e1e 36%);
+    border-left: 8px solid #4f46e5;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.24);
+}
+
+.platform-badge-vk,
+.platform-badge.platform-vk,
+.badge-platform-vk {
+    background: #4f46e5;
+    color: #ffffff;
+    border: 1px solid #818cf8;
+}
